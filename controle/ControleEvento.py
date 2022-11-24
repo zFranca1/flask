@@ -26,8 +26,7 @@ class ControleEvento(ControleGenerico):
             retorno.idevento = evento[0][0]
             retorno.nome = evento[0][1]
             retorno.flag = evento[0][2]
-            retorno.palestrante = evento[0][3]
-            retorno.qtdvagas = evento[0][4]
+            retorno.descricao = evento[0][3]
 
         return retorno
 
@@ -51,8 +50,7 @@ class ControleEvento(ControleGenerico):
         retorno = {'idevento': dados.idevento,
                    'nome': dados.nome,
                    'flag': dados.flag,
-                   'palestrante': dados.palestrante,
-                   'qtdvagas': dados.qtdvagas,}
+                   'descricao': dados.descricao,}
         return json.dumps(retorno)
 
 

@@ -3,7 +3,7 @@ from modelo.Cliente import *
 from controle.controleGenerico import *
 
 
-class ControleCliente(ControleGenerico):
+class ControleEvento(ControleGenerico):
     __lista = []
 
     def incluirCliente(self,cliente):

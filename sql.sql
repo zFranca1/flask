@@ -1,11 +1,8 @@
-CREATE TABLE aulas.cliente (
-	idcliente INT auto_increment NULL,
+CREATE TABLE aulas.evento (
+	idevento INT auto_increment NULL,
 	nome varchar(100) NULL,
-	endereco varchar(100) NULL,
-	uf varchar(100) NULL,
-	cep varchar(100) NULL,
-	nascimento varchar(100) NULL,
-	cidade varchar(100) NULL
+	descricao varchar(100) NULL,
+	CONSTRAINT evento_PK PRIMARY KEY (idevento)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4

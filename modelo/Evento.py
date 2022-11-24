@@ -7,9 +7,8 @@ class Evento:
         self.__idevento=""
         self.__nome=""
         self.__flag=0
-        self.__palestrante=""
-        self.__qtdvagas=""
-        self.__lista='nome,palestrante,qtdvagas'
+        self.__descricao=""
+        self.__lista='nome,descricao'
 
         self.__dadosInserir=""
         self.__dadosUpdate=""
@@ -23,12 +22,12 @@ class Evento:
 
     @property
     def dadosInserir(self):
-        self.__dadosInserir = "'{}','{}','{}'".format(self.nome, self.palestrante,self.qtdvagas)
+        self.__dadosInserir = "'{}','{}'".format(self.nome, self.descricao)
         return self.__dadosInserir
 
     @property
     def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',palestrante='{}' where idevento={}".format(self.nome, self.palestrante,self.idevento)
+        self.__dadosUpdate = "nome='{}',descricao='{}' where idevento={}".format(self.nome, self.descricao,self.idevento)
         return self.__dadosUpdate
 
     @property
@@ -70,21 +69,12 @@ class Evento:
         self.__flag = entrada
 
     @property
-    def palestrante(self):
-        return self.__palestrante
+    def descricao(self):
+        return self.__descricao
 
-    @palestrante.setter
-    def palestrante(self, entrada):
-        self.__palestrante = entrada
-
-
-    @property
-    def qtdvagas(self):
-        return self.__qtdvagas
-
-    @qtdvagas.setter
-    def qtdvagas(self, entrada):
-        self.__qtdvagas = entrada
+    @descricao.setter
+    def descricao(self, entrada):
+        self.__descricao = entrada
 
 
     def __repr__(self):
