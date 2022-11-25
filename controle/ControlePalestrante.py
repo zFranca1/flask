@@ -6,7 +6,7 @@ from controleGenerico import *
 
 class ControlePalestrante(ControleGenerico):
 
-    def incluirPalestrante(self, palestrante):
+    def incluirPalestrante(self,palestrante):
         self.incluir(palestrante)
 
     def alterarPalestrante(self, palestrante):
@@ -39,7 +39,7 @@ class ControlePalestrante(ControleGenerico):
         palestrante = Palestrante()
         palestrante.idevento=entrada[0]
         palestrante.nome=entrada[1]
-        palestrante.endereco=entrada[2]
+        palestrante.email=entrada[2]
 
         return palestrante
 

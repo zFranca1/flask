@@ -23,22 +23,22 @@ class Palestrante:
 
     @property
     def dadosInserir(self):
-        self.__dadosInserir = "'{}','{}','{}'".format(self.nome, self.email, self.cpf)
+        self.__dadosInserir = "'{}','{}','{}'".format(self.nome, self.email,self.cpf)
         return self.__dadosInserir
 
     @property
     def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',cpf='{}' where idpalestrante={}".format(self.nome,self.email,self.cpf,self.idpalestrante)
+        self.__dadosUpdate = "nome='{}',endereco='{}' where idaluno={}".format(self.nome, self.email,self.idpalestrante)
         return self.__dadosUpdate
 
     @property
     def dadosDelete(self):
-        self.__dadosDelete = "where idpalestrante={}".format(self.idpalestrante)
+        self.__dadosDelete = "where idaluno={}".format(self.idpalestrante)
         return self.__dadosDelete
 
     @property
     def dadosPesquisa(self):
-        self.__dadosPesquisa = "select * from palestrante where idpalestrante={}".format(self.idpalestrante)
+        self.__dadosPesquisa = "select * from aluno where idaluno={}".format(self.idpalestrante)
         return self.__dadosPesquisa
 
     @property
@@ -81,9 +81,10 @@ class Palestrante:
     def cpf(self):
         return self.__cpf
 
-    @email.setter
+    @cpf.setter
     def cpf(self, entrada):
         self.__cpf = entrada
+
 
 
     def __repr__(self):
