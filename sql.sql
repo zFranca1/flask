@@ -7,3 +7,14 @@ CREATE TABLE aulas.evento (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE aulas.palestrante (
+	idpalestrante INT auto_increment NULL,
+	nome varchar(100) NULL,
+	email varchar(100) NULL,
+	cpf varchar(100) NULL,
+	CONSTRAINT palestrante_PK PRIMARY KEY (idpalestrante)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;
