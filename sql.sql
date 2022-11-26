@@ -18,3 +18,14 @@ CREATE TABLE aulas.palestrante (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE aulas.semana (
+	idsemana INT auto_increment NULL,
+	nome varchar(100) NULL,
+	datainicio varchar(100) NULL,
+	datatermino varchar(100) NULL,
+	CONSTRAINT semana_PK PRIMARY KEY (idsemana)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;

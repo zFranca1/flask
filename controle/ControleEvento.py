@@ -27,6 +27,10 @@ class ControleEvento(ControleGenerico):
             retorno.nome = evento[0][1]
             retorno.flag = evento[0][2]
             retorno.descricao = evento[0][3]
+            retorno.data = evento[0][4]
+            retorno.horaio = evento[0][5]
+            retorno.idsemana = evento[0][6]
+            retorno.local = evento[0][7]
 
         return retorno
 

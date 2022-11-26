@@ -3,7 +3,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   return render_template('evento.html')
+   return render_template('homepage.html')
+
+@app.route('/evento')
+def evento():
+   return render_template('evento.html')   
 
 @app.route('/palestrante')
 def palestrante():
@@ -53,6 +57,10 @@ def gravar():
        ev = Evento()
        ev.nome = result['nome']
        ev.descricao = result['descricao']
+       ev.data = result['data']
+       ev.horario = result['horario']
+       ev.idsemana = result['idsemana']
+       ev.local = result['local']
        daoEvento = ControleEvento()
 
        if result['botao']=='Gravar':
@@ -67,7 +75,7 @@ def gravar():
 def tabela():
     daoCliente = ControleEvento()
     dados = daoCliente.listarTodosRegistros()
-    return render_template("resultadotabela.html", result=dados)
+    return render_template("tabela-eventos.html", result=dados)
 
 @app.route('/tabelaPalestrante')
 def tabelaPalestrante():

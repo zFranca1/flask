@@ -19,8 +19,8 @@ class ControleGenerico:
         try:
            self.ob.execute(sql)
            self.ob.gravar()
-        except:
-           print("Houve um erro")
+        except Exception as error:
+           print(error)
            self.ob.descarte()
 
     def incluirGeral(self, objeto):

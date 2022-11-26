@@ -18,6 +18,7 @@
 
    </style>
    <body>
+      <h2>Evento</h2>
       <form action = "http://localhost:5000/evento/gravar" method = "POST">
          <table>
          <tr>
@@ -25,6 +26,14 @@
          </tr><tr>
          <td>Descricao:</td><td><input type = "text" name = "descricao" ><td>
          </tr><tr>
+         <td>Data:</td><td><input type = "text" name = "data" ></td>
+         </tr><tr>
+         <td>horario:</td><td><input type = "text" name = "horario" ></td>
+         </tr><tr>
+         <td>Semana ID:</td><td><input type = "text" name = "idsemana" ></td>
+         </tr><tr>  
+         <td>Local:</td><td><input type = "text" name = "local" ></td>
+         </tr><tr>    
          </table>
          <p><input type = "submit" value = "Gravar" name='botao'></p>
       </form>
