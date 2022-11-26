@@ -1,0 +1,43 @@
+<html>
+   <style>
+         input{
+             margin-left: 100px;
+             padding:2px;
+         }
+         td{
+            margin-left: 0;
+            font-family:"Times New Roman";
+            font-size: 13px;
+         }
+         input:hover{
+             background-color: antiquewhite;
+         }
+         table{
+            width: 150px;
+         }
+
+   </style>
+   <body>
+      <h2>Semana</h2>
+      <form action = "http://localhost:5000/semana/gravar" method = "POST">
+         <table>
+         <tr>
+            <td>Nome:</td><td><input type = "text" name = "nome" ></td>
+            </tr>
+         <tr>
+            <td>descricao:</td><td><input type = "text" name = "descricao" ></td>
+            </tr>
+         <tr>
+            <td>local:</td><td><input type = "text" name = "local" ></td>
+            </tr>
+         <tr>
+            <td>Data inicio:</td><td><input type = "text" name = "datainicio" ></td>
+            </tr>
+         <tr>
+            <td>Data Termino:</td><td><input type = "text" name = "datatermino" ></td>
+            </tr>       
+         </table>
+         <p><input type = "submit" value = "Gravar" name='botao'></p>
+      </form>
+   </body>
+</html>
