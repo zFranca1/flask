@@ -29,3 +29,15 @@ CREATE TABLE aulas.semana (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE aulas.participante (
+	idparticipante INT auto_increment NULL,
+	nome varchar(100) NULL,
+	email varchar(100) NULL,
+	cpf varchar(100) NULL,
+	CONSTRAINT participante_PK PRIMARY KEY (idparticipante)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;
+

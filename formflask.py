@@ -17,6 +17,10 @@ def palestrante():
 def semana():
    return render_template('semana.html')
 
+@app.route('/participante')
+def participante():
+   return render_template('participante.html')
+
 @app.route('/teste')
 def teste():
    #Usando arquivo PHP
@@ -95,6 +99,23 @@ def gravarSemana():
 
     return redirect(url_for('tabelaSemanas'))
 
+@app.route('/participante/gravar',methods = ['POST', 'GET'])
+def gravarParticipante():
+    if request.method == 'POST':
+       result = request.form
+       pa = Participante()
+       pa.nome = result['nome']
+       pa.email = result['email']
+       pa.cpf = result['cpf']
+       daoParticipante = ControleParticipante()
+
+       if result['botao']=='Gravar':
+           daoParticipante.incluirParticipante(pa)
+       else:
+           pa.idpalestrante=result['codigo']
+           daoParticipante.alterarEvento(pa)
+
+    return redirect(url_for('tabelaParticipantes'))
 
 @app.route('/tabela/')
 def tabela():
@@ -114,16 +135,24 @@ def tabelaSemanas():
     dados = daoSemana.listarTodosRegistros()
     return render_template("tabela-semanas.html", result=dados)
 
+@app.route('/tabelaParticipantes')
+def tabelaParticipantes():
+    daoParticipante = ControleParticipante()
+    dados = daoParticipante.listarTodosRegistros()
+    return render_template("tabela-participantes.html", result=dados)    
+
 import sys
 import subprocess as sp
 sys.path.insert(0, 'modelo')
 sys.path.insert(1, 'controle')
 from modelo.Evento import *
-from modelo.Palestrante import *
+from modelo.Participante import *
 from modelo.Semana import *
+from modelo.Participante import *
 from controle.ControleEvento import *
 from controle.ControlePalestrante import *
 from controle.ControleSemana import *
+from controle.ControleParticipante import *
 
 
 if __name__ == '__main__':
