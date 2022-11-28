@@ -7,7 +7,13 @@ def index():
 
 @app.route('/evento')
 def evento():
-   return render_template('evento.html')   
+
+    daoPalestrante = ControlePalestrante()
+    daoSemana = ControleSemana()
+    palestrante = daoPalestrante.listarTodosRegistros()
+    semana = daoSemana.listarTodosRegistros()
+
+    return render_template('evento.html', evento = evento, palestrante = palestrante, semana = semana)  
 
 @app.route('/palestrante')
 def palestrante():
@@ -34,11 +40,6 @@ def inscricaoEvento():
     
     return render_template('participante-evento.html', evento = evento, participante = participante)
    
-@app.route('/teste')
-def teste():
-   #Usando arquivo PHP
-   out = sp.run(["php", "templates/estudantephp.php"], stdout=sp.PIPE)
-   return out.stdout
 
 @app.route('/editar/<id>')
 def editar(id):
@@ -82,15 +83,16 @@ def gravar():
        ev.horario = result['horario']
        ev.idsemana = result['idsemana']
        ev.local = result['local']
+       ev.idpalestrante = result['idpalestrante']
+       ev.idsemana = result['idsemana']
        daoEvento = ControleEvento()
+       
 
        if result['botao']=='Gravar':
            daoEvento.incluirEvento(ev)
-       else:
-           ev.idaluno=result['codigo']
-           daoEvento.alterarEvento(ev)
 
-    return redirect(url_for('tabela'))
+    return redirect(url_for('tabelaSemanas'))
+
 
 @app.route('/semana/gravar',methods = ['POST', 'GET'])
 def gravarSemana():
@@ -141,6 +143,22 @@ def gravarParticipanteEvento():
            daoEventoParticipante.incluirEventoParticipante(pa)
 
     return redirect(url_for('tabelaPalestrante'))
+
+
+@app.route('/palestranteEvento/gravar',methods = ['POST', 'GET'])
+def gravarPalestranteEvento():
+    if request.method == 'POST':
+       result = request.form
+       pa = EventoPalestrante()
+       pa.idevento = result['idevento']
+       pa.idpalestrante = result['idparticipante']
+       pa.idsemana = result['idsemana']
+       daoEventoPalestrante = ControleEventoPalestrante()
+
+       if result['botao']=='Gravar':
+           daoEventoPalestrante.incluirEventoParticipante(pa)
+
+    return redirect(url_for('tabelaPalestrante'))    
 
 @app.route('/tabela/')
 def tabela():
@@ -194,11 +212,13 @@ from modelo.Participante import *
 from modelo.Semana import *
 from modelo.Participante import *
 from modelo.EventoParticipante import *
+from modelo.EventoParticipante import *
 from controle.ControleEventoParticipante import *
 from controle.ControleEvento import *
 from controle.ControlePalestrante import *
 from controle.ControleSemana import *
 from controle.ControleParticipante import *
+from controle.ControleEventoPalestrante import *
 
 
 if __name__ == '__main__':

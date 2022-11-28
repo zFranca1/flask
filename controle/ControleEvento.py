@@ -31,6 +31,7 @@ class ControleEvento(ControleGenerico):
             retorno.horaio = evento[0][5]
             retorno.idsemana = evento[0][6]
             retorno.local = evento[0][7]
+            retorno.idpalestrante = evento[0][8]
 
         return retorno
 

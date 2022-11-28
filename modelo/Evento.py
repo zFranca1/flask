@@ -12,7 +12,8 @@ class Evento:
         self.__horario=""
         self.__idsemana=""
         self.__local=""
-        self.__lista='nome,descricao,data,horario,idsemana,local'
+        self.__idpalestrante=""
+        self.__lista='nome,descricao,data,horario,idsemana,local,idpalestrante'
 
         self.__dadosInserir=""
         self.__dadosUpdate=""
@@ -26,7 +27,7 @@ class Evento:
 
     @property
     def dadosInserir(self):
-        self.__dadosInserir = "'{}','{}','{}','{}','{}','{}'".format(self.nome, self.descricao, self.data, self.horario, self.idsemana, self.local)
+        self.__dadosInserir = "'{}','{}','{}','{}','{}','{}'".format(self.nome, self.descricao, self.data, self.horario, self.idsemana, self.local, self.idpalestrante)
         return self.__dadosInserir
 
     @property
@@ -111,7 +112,15 @@ class Evento:
 
     @local.setter
     def local(self, entrada):
-        self.__local = entrada      
+        self.__local = entrada
+
+    @property
+    def idpalestrante(self):
+        return self.__idpalestrante
+
+    @idpalestrante.setter
+    def idpalestrante(self, entrada):
+        self.__idpalestrante = entrada              
 
 
     def __repr__(self):
