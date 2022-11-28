@@ -1,10 +1,11 @@
 <!doctype html>
 <head>
-   <title>Palestrantes</title>
+   <title>Bootstrap 5 Example</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -14,7 +15,7 @@
 <html>
    <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Palestrantes</a>
+      <a class="navbar-brand" href="#">Home Page</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,14 +23,14 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/tabelaPalestrante">Palestrantes</a>
+              <a class="dropdown-item" href="/tabelaPalestrantes">Palestrantes</a>
               <a class="dropdown-item" href="/tabelaParticipantes">Participantes</a>
               <a class="dropdown-item" href="/tabela">Eventos</a>
               <a class="dropdown-item" href="/tabelaSemanas">Semanas</a>
@@ -38,35 +39,21 @@
         </ul>
       </div>
     </nav>
-    
-      <div class="container mt-3">
-         <td><a class="btn btn-primary" href='/palestrante'>Incluir</a></td>
-         <table class="table">
-           <thead>
-             <tr>
-               <th>Codigo</th>
-               <th>Nome</th>
-               <th>Email</th>
-                <th>Cpf</th>
-                <th colspan="3">Comandos</th>
-             </tr>
-             {% for x in result%}
-             <tr>
-               <td> {{ x[0]}} </td>
-               <td> {{ x[1]}} </td>
-               <td> {{ x[2]}} </td>
-               <td> {{ x[3]}} </td>
-               <td><a href='/editar/{{x[0]}}'>Editar</a></td>
-               <td><a href='/delete/{{x[0]}}'>Apagar</a></td>
-            </tr>
-            {% endfor %}
-           </thead>
-           <tbody>
-           </tbody>
-         </table>
-       </div>
-       
 
+    <div class="card-deck">
+      {% for x in result%}
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ x[1] }}</h5>
+          <p class="card-text">{{ x[2] }}</p>
+          <p class="card-text">Data: {{ x[3] }}</p>
+          <p class="card-text">Horario: {{ x[4] }}</p>
+          <p class="card-text">Local: {{ x[6] }}</p>
+          <td><a class="btn btn-primary" href='/evento'>Inscrever</a></td>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
    </body>
 </html>

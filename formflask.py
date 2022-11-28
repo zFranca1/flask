@@ -21,6 +21,19 @@ def semana():
 def participante():
    return render_template('participante.html')
 
+@app.route('/evento/lista')
+def eventoLista():
+   return render_template('eventos-lista.html')
+
+@app.route('/inscricaoEvento')
+def inscricaoEvento():
+    daoEvento = ControleEvento()
+    daoParticipante = ControleParticipante()
+    evento = daoEvento.listarTodosRegistros()
+    participante = daoParticipante.listarTodosRegistros()
+    
+    return render_template('participante-evento.html', evento = evento, participante = participante)
+   
 @app.route('/teste')
 def teste():
    #Usando arquivo PHP
@@ -117,6 +130,21 @@ def gravarParticipante():
 
     return redirect(url_for('tabelaParticipantes'))
 
+
+@app.route('/participanteEvento/gravar',methods = ['POST', 'GET'])
+def gravarParticipanteEvento():
+    if request.method == 'POST':
+       result = request.form
+       pa = EventoParticipante()
+       pa.idevento = result['idevento']
+       pa.idparticipante = result['idparticipante']
+       daoEventoParticipante = ControleEventoParticipante()
+
+       if result['botao']=='Gravar':
+           daoEventoParticipante.incluirEventoParticipante(pa)
+
+    return redirect(url_for('tabelaPalestrante'))
+
 @app.route('/tabela/')
 def tabela():
     daoCliente = ControleEvento()
@@ -139,7 +167,26 @@ def tabelaSemanas():
 def tabelaParticipantes():
     daoParticipante = ControleParticipante()
     dados = daoParticipante.listarTodosRegistros()
-    return render_template("tabela-participantes.html", result=dados)    
+    return render_template("tabela-participantes.html", result=dados)
+
+@app.route('/tabelaEventoParticipante')
+def tabelaEventoParticipante():
+    daoEvento = ControleEvento()
+    daoParticipante = ControleParticipante()
+    daoEventoParticipante = ControleEventoParticipante()
+    eventoParticipante = daoEventoParticipante.listarTodosRegistros()
+    evento = daoEvento.listarTodosRegistros()
+    participante = daoParticipante.listarTodosRegistros()
+    
+    return render_template('tabela-eventoParticipante.html', evento = evento, participante = participante, eventoParticipante = eventoParticipante)
+
+@app.route('/listaEventos')
+def listaEvento():
+    daoEvento = ControleEvento()
+    dados = daoEvento.listarTodosRegistros()
+    return render_template("eventos-lista.html", result=dados)
+
+    
 
 import sys
 import subprocess as sp
@@ -149,6 +196,8 @@ from modelo.Evento import *
 from modelo.Participante import *
 from modelo.Semana import *
 from modelo.Participante import *
+from modelo.EventoParticipante import *
+from controle.ControleEventoParticipante import *
 from controle.ControleEvento import *
 from controle.ControlePalestrante import *
 from controle.ControleSemana import *
