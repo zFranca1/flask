@@ -3,7 +3,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   return render_template('homepage.html')
+    daoSemana = ControleSemana()
+    dados = daoSemana.listarTodosRegistros()
+
+    return render_template('homepage.html', result = dados)
 
 @app.route('/evento')
 def evento():
@@ -195,13 +198,6 @@ def tabelaEventoParticipante():
     
     return render_template('tabela-eventoParticipante.html', evento = evento, participante = participante, eventoParticipante = eventoParticipante)
 
-@app.route('/listaEventos')
-def listaEvento():
-    daoEvento = ControleEvento()
-    dados = daoEvento.listarTodosRegistros()
-    return render_template("eventos-lista.html", result=dados)
-
-    
 
 import sys
 import subprocess as sp
