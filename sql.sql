@@ -41,3 +41,12 @@ ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE aulas.eventoxparticipante (
+	idevento INT NULL,
+	idparticipante INT NULL,
+	CONSTRAINT eventoxparticipante_PK PRIMARY KEY (idevento,idparticipante)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_unicode_ci;
+
