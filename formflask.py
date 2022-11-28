@@ -124,9 +124,6 @@ def gravarParticipante():
 
        if result['botao']=='Gravar':
            daoParticipante.incluirParticipante(pa)
-       else:
-           pa.idpalestrante=result['codigo']
-           daoParticipante.alterarEvento(pa)
 
     return redirect(url_for('tabelaParticipantes'))
 

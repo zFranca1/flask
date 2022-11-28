@@ -14,7 +14,7 @@
 <html>
    <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Palestrantes</a>
+      <a class="navbar-brand" href="/tabelaPalestrante">Tabela Palestrantes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,15 +40,18 @@
     </nav>
     
       <div class="container mt-3">
-         <td><a class="btn btn-primary" href='/palestrante'>Incluir</a></td>
+        <h2>Palestrantes</h2>
+        <p>
+          <td><a class="btn btn-primary" href='/palestrante'>Incluir Palestrante</a></td>
+        </p>
          <table class="table">
-           <thead>
+           <thead class="thead thead-dark">
              <tr>
                <th>Codigo</th>
                <th>Nome</th>
                <th>Email</th>
-                <th>Cpf</th>
-                <th colspan="3">Comandos</th>
+               <th>Cpf</th>
+               <th colspan="3">Comandos</th>
              </tr>
              {% for x in result%}
              <tr>
@@ -65,8 +68,5 @@
            </tbody>
          </table>
        </div>
-       
-
-
    </body>
 </html>
