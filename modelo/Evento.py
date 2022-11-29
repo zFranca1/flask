@@ -27,7 +27,7 @@ class Evento:
 
     @property
     def dadosInserir(self):
-        self.__dadosInserir = "'{}','{}','{}','{}','{}','{}'".format(self.nome, self.descricao, self.data, self.horario, self.idsemana, self.local, self.idpalestrante)
+        self.__dadosInserir = "'{}','{}','{}','{}','{}','{}','{}'".format(self.nome, self.descricao, self.data, self.horario, self.idsemana, self.local, self.idpalestrante)
         return self.__dadosInserir
 
     @property

@@ -79,9 +79,9 @@
                <label for="inputState">Palestrante</label>
                <select id="inputState" class="form-control" name="idpalestrante">
                  <option selected>Selecionar...</option>
-                 {% for y in palestrante %}
-                 <option value="{{ y[0] }}">{{ y[1] }}</option>
-                 {%endfor%}
+                 {% for x in palestrante %}
+                 <option value="{{ x[0] }}">{{ x[1] }}</option>
+                 {%endfor%}w
                </select>
                <p></p>
              <button type="submit" class="btn btn-primary" name='botao' value="Gravar">Gravar</button>

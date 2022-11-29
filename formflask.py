@@ -80,6 +80,7 @@ def gravar():
     if request.method == 'POST':
        result = request.form
        ev = Evento()
+       pa = EventoPalestrante()
        ev.nome = result['nome']
        ev.descricao = result['descricao']
        ev.data = result['data']
@@ -88,11 +89,16 @@ def gravar():
        ev.local = result['local']
        ev.idpalestrante = result['idpalestrante']
        ev.idsemana = result['idsemana']
+       pa.idevento = result['idevento']
+       pa.idpalestrante= result['idpalestrante']
+       pa.idsemana = result['idsemana']
+       daoEventoPalestrante = ControleEventoPalestrante()
        daoEvento = ControleEvento()
        
 
        if result['botao']=='Gravar':
            daoEvento.incluirEvento(ev)
+           daoEventoPalestrante.incluirEventoPalestrante(pa)
 
     return redirect(url_for('tabelaSemanas'))
 
@@ -160,6 +166,7 @@ def gravarPalestranteEvento():
 
        if result['botao']=='Gravar':
            daoEventoPalestrante.incluirEventoParticipante(pa)
+           
 
     return redirect(url_for('tabelaPalestrante'))    
 
