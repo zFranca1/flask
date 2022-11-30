@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-   <title>Bootstrap 5 Example</title>
+   <title>Eventos</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 <html>
    <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Home Page</a>
+      <a class="navbar-brand" href="#">Eventos</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,7 +23,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,9 +39,10 @@
         </ul>
       </div>
     </nav>
-
-    <div class="card-deck">
+    <p></p>
+    <div class="container mt-3">
       {% for x in result%}
+      <div class="card-deck">
       <div class="card text-white bg-dark mb-3">
         <div class="card-body">
           <h5 class="card-title">{{ x[1] }}</h5>
@@ -49,11 +50,16 @@
           <p class="card-text">Data: {{ x[3] }}</p>
           <p class="card-text">Horario: {{ x[4] }}</p>
           <p class="card-text">Local: {{ x[6] }}</p>
-          <td><a class="btn btn-primary" href='/evento'>Inscrever</a></td>
+          {% for y in palestrante%}
+          {%if x[7] == y[0]%}
+          <p class="card-text">Palestrante: {{ y[1] }}</p>
+          {%endif%}
+          {%endfor%}
+          <td><a class="btn btn-primary" href='/inscricaoEvento'>Inscrever</a></td>
         </div>
-      </div>
-      {% endfor %}
+      </div> 
     </div>
-
-   </body>
+    {% endfor %}
+  </div>  
+  </body>
 </html>

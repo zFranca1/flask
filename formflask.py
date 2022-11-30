@@ -21,6 +21,7 @@ def evento():
 @app.route('/palestrante')
 def palestrante():
    return render_template('palestrante.html')
+   
 
 @app.route('/semana')
 def semana():
@@ -50,12 +51,35 @@ def editar(id):
     dados = daoCliente.pesquisaCodigo(id)
     return render_template("editaestudante.html",dados = dados)
 
-@app.route('/delete/<id>')
-def delete(id):
+@app.route('/deleteParticipante/<id>')
+def deleteParticipante(id):
+    daoParticipante = ControleParticipante()
+    daoParticipante.deletarParticipante(id)
+    return redirect(url_for('tabelaParticipantes'))
+
+@app.route('/deletePalestrante/<id>')
+def deletePalestrante(id):
+    daoPalestrante = ControlePalestrante()
+    daoPalestrante.deletarPalestrante(id)
+    return redirect(url_for('tabelaPalestrante'))
+
+@app.route('/deleteEvento/<id>')
+def deleteEvento(id):
     daoEvento = ControleEvento()
-    daoEvento.deleteEvento(id)
+    daoEvento.deletarEvento(id)
     return redirect(url_for('tabela'))
 
+@app.route('/deleteSemana/<id>')
+def deleteSemana(id):
+    daoSemana = ControleSemana()
+    daoSemana.deletarSemana(id)
+    return redirect(url_for('tabelaSemanas'))      
+
+@app.route('/deleteEventoParticipante/<idevento>,<idparticipante>')
+def deleteEventoParticipante(idevento,idparticipante):
+    daoEventoParticipante = ControleEventoParticipante()
+    daoEventoParticipante.deletarEventoParticipante(idevento,idparticipante)
+    return redirect(url_for('tabelaEventoParticipante'))
 
 @app.route('/palestrante/gravar',methods = ['POST', 'GET'])
 def gravarPalestrante():
@@ -80,7 +104,6 @@ def gravar():
     if request.method == 'POST':
        result = request.form
        ev = Evento()
-       pa = EventoPalestrante()
        ev.nome = result['nome']
        ev.descricao = result['descricao']
        ev.data = result['data']
@@ -89,18 +112,13 @@ def gravar():
        ev.local = result['local']
        ev.idpalestrante = result['idpalestrante']
        ev.idsemana = result['idsemana']
-       pa.idevento = result['idevento']
-       pa.idpalestrante= result['idpalestrante']
-       pa.idsemana = result['idsemana']
-       daoEventoPalestrante = ControleEventoPalestrante()
        daoEvento = ControleEvento()
        
 
        if result['botao']=='Gravar':
            daoEvento.incluirEvento(ev)
-           daoEventoPalestrante.incluirEventoPalestrante(pa)
 
-    return redirect(url_for('tabelaSemanas'))
+    return redirect(url_for('tabela'))
 
 
 @app.route('/semana/gravar',methods = ['POST', 'GET'])
@@ -151,7 +169,7 @@ def gravarParticipanteEvento():
        if result['botao']=='Gravar':
            daoEventoParticipante.incluirEventoParticipante(pa)
 
-    return redirect(url_for('tabelaPalestrante'))
+    return redirect(url_for('tabelaEventoParticipante'))
 
 
 @app.route('/palestranteEvento/gravar',methods = ['POST', 'GET'])
@@ -173,8 +191,18 @@ def gravarPalestranteEvento():
 @app.route('/tabela/')
 def tabela():
     daoCliente = ControleEvento()
+    daoPalestrante = ControlePalestrante()
+    palestrante = daoPalestrante.listarTodosRegistros()
     dados = daoCliente.listarTodosRegistros()
-    return render_template("tabela-eventos.html", result=dados)
+    return render_template("tabela-eventos.html", result=dados, palestrante = palestrante)
+
+@app.route('/eventos')
+def eventos():
+    daoCliente = ControleEvento()
+    daoPalestrante = ControlePalestrante()
+    palestrante = daoPalestrante.listarTodosRegistros()
+    dados = daoCliente.listarTodosRegistros()
+    return render_template("eventos-lista.html", result=dados, palestrante = palestrante)    
 
 @app.route('/tabelaPalestrante')
 def tabelaPalestrante():

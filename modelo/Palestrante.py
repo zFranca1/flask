@@ -26,19 +26,15 @@ class Palestrante:
         self.__dadosInserir = "'{}','{}','{}'".format(self.nome, self.email,self.cpf)
         return self.__dadosInserir
 
-    @property
-    def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',endereco='{}' where idaluno={}".format(self.nome, self.email,self.idpalestrante)
-        return self.__dadosUpdate
 
     @property
     def dadosDelete(self):
-        self.__dadosDelete = "where idaluno={}".format(self.idpalestrante)
+        self.__dadosDelete = "where idpalestrante={}".format(self.idpalestrante)
         return self.__dadosDelete
 
     @property
     def dadosPesquisa(self):
-        self.__dadosPesquisa = "select * from aluno where idaluno={}".format(self.idpalestrante)
+        self.__dadosPesquisa = "select * from aluno where idpalestrante={}".format(self.idpalestrante)
         return self.__dadosPesquisa
 
     @property

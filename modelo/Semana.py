@@ -28,14 +28,10 @@ class Semana:
         self.__dadosInserir = "'{}','{}','{}','{}','{}'".format(self.nome, self.local,self.datainicio, self.datatermino, self.descricao)
         return self.__dadosInserir
 
-    @property
-    def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',endereco='{}' where idaluno={}".format(self.nome, self.local,self.idsemana)
-        return self.__dadosUpdate
 
     @property
     def dadosDelete(self):
-        self.__dadosDelete = "where idaluno={}".format(self.idsemana)
+        self.__dadosDelete = "where idsemana={}".format(self.idsemana)
         return self.__dadosDelete
 
     @property

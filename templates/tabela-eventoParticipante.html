@@ -16,7 +16,7 @@
 <html>
    <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Tabela Eventos</a>
+      <a class="navbar-brand" href="#">Eventos e Participantes</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,10 +31,12 @@
               Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/tabelaPalestrantes">Palestrantes</a>
+              <a class="dropdown-item" href="/tabelaPalestrante">Palestrantes</a>
               <a class="dropdown-item" href="/tabelaParticipantes">Participantes</a>
               <a class="dropdown-item" href="/tabela">Eventos</a>
               <a class="dropdown-item" href="/tabelaSemanas">Semanas</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/inscricaoEvento">Inscricao Evento</a>
             </div>
           </li>
         </ul>
@@ -42,8 +44,8 @@
     </nav>
 
       <div class="container mt-3">
-         <h2>Eventos</h2>
-         <td><a class="btn btn-primary" href='/evento'>Incluir</a></td>
+         <h2>Eventos e Participantes</h2>
+         <p></p>
          <table class="table">
            <thead class="thead thead-dark">
              <tr>
@@ -64,8 +66,7 @@
               <td> {{ y[1]}} </td>
               {% endif%}
               {% endfor %}
-               <td><a href='/editar/{{x[0]}}'>Editar</a></td>
-               <td><a href='/delete/{{x[0]}}'>Apagar</a></td>
+               <td><a href='/deleteEventoParticipante/{{x[0]}},{{x[1]}}'>Apagar</a></td>
             </tr>
             {% endfor %}
            </thead>
@@ -83,12 +84,10 @@
               <p class="card-text">Data: {{ x[3] }}</p>
               <p class="card-text">Horario: {{ x[4] }}</p>
               <p class="card-text">Local: {{ x[6] }}</p>
-              <td><a class="btn btn-primary" href='/evento'>Inscrever</a></td>
+              <td><a class="btn btn-primary" href='/tabelaEventoParticipante'>Inscrever</a></td>
             </div>
           </div>
           {% endfor %}
         </div>
-
-
    </body>
 </html>

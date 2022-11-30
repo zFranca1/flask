@@ -42,17 +42,17 @@
          <div class="container mt-3">
             <h2>Cadastro de Eventos</h2>
             <label for="exampleInputEmail1">Nome do Evento</label>
-            <input type="text" class="form-control" placeholder="Ex: João Pedro" aria-label="Username" aria-describedby="basic-addon1" name="nome">
+            <input type="text" class="form-control" placeholder="Ex: Curso de alguma coisa" aria-label="Username" aria-describedby="basic-addon1" name="nome">
           </div>
 
           <div class="container mt-3">
             <label for="exampleInputEmail1">Data</label>
-            <input type="text" class="form-control" placeholder="Ex: 28/11/2022" aria-label="Username" aria-describedby="basic-addon1" name="data">
+            <input type="date" class="form-control" placeholder="Ex: 28/11/2022" aria-label="Username" aria-describedby="basic-addon1" name="data">
           </div>
 
           <div class="container mt-3">
             <label for="exampleInputEmail1">Horário</label>
-            <input type="text" class="form-control" placeholder="Ex: 13:00" aria-label="Username" aria-describedby="basic-addon1" name="horario">
+            <input type="text" class="form-control" placeholder="Ex: 13h" aria-label="Username" aria-describedby="basic-addon1" name="horario">
 
             
             <p>
@@ -81,7 +81,7 @@
                  <option selected>Selecionar...</option>
                  {% for x in palestrante %}
                  <option value="{{ x[0] }}">{{ x[1] }}</option>
-                 {%endfor%}w
+                 {%endfor%}
                </select>
                <p></p>
              <button type="submit" class="btn btn-primary" name='botao' value="Gravar">Gravar</button>

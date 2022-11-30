@@ -33,7 +33,7 @@ class Participante:
 
     @property
     def dadosDelete(self):
-        self.__dadosDelete = "where idaluno={}".format(self.idparticipante)
+        self.__dadosDelete = "where idparticipante={}".format(self.idparticipante)
         return self.__dadosDelete
 
     @property

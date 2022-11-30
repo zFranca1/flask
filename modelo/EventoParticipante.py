@@ -4,12 +4,11 @@ class EventoParticipante:
 
     def __init__(self):
 
-        self.__idparticipante=""
+        self.__idevento=""
         self.__idparticipante=""
         self.__lista='idevento,idparticipante'
 
         self.__dadosInserir=""
-        self.__dadosUpdate=""
         self.__dadosDelete=""
         self.__dadosPesquisa=""
         self.__tabelaBanco = 'eventoxparticipante'
@@ -23,14 +22,10 @@ class EventoParticipante:
         self.__dadosInserir = "'{}','{}'".format(self.idevento, self.idparticipante)
         return self.__dadosInserir
 
-    @property
-    def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',endereco='{}' where idaluno={}".format(self.idevento, self.idparticipante)
-        return self.__dadosUpdate
 
     @property
     def dadosDelete(self):
-        self.__dadosDelete = "where idaluno={}".format(self.idparticipante)
+        self.__dadosDelete = "where idevento={} and idparticipante={}".format(self.idevento,self.idparticipante)
         return self.__dadosDelete
 
     @property

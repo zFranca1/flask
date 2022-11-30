@@ -77,8 +77,8 @@ class ControleGenerico:
         try:
             self.ob.execute(sql)
             self.ob.gravar()
-        except:
-            print("Houve um erro")
+        except Exception as erro:
+            print(erro)
             self.ob.descarte()
 
     def procuraRegistro(self,objeto):

@@ -16,7 +16,6 @@ class Evento:
         self.__lista='nome,descricao,data,horario,idsemana,local,idpalestrante'
 
         self.__dadosInserir=""
-        self.__dadosUpdate=""
         self.__dadosDelete=""
         self.__dadosPesquisa=""
         self.__tabelaBanco = 'evento'
@@ -30,10 +29,6 @@ class Evento:
         self.__dadosInserir = "'{}','{}','{}','{}','{}','{}','{}'".format(self.nome, self.descricao, self.data, self.horario, self.idsemana, self.local, self.idpalestrante)
         return self.__dadosInserir
 
-    @property
-    def dadosUpdate(self):
-        self.__dadosUpdate = "nome='{}',descricao='{}' where idevento={}".format(self.nome, self.descricao,self.idevento)
-        return self.__dadosUpdate
 
     @property
     def dadosDelete(self):

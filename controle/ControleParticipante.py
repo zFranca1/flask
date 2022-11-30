@@ -12,7 +12,7 @@ class ControleParticipante(ControleGenerico):
     def alterarParticipante(self, participante):
         self.alterar(participante)
 
-    def deletarPalestrante(self,id):
+    def deletarParticipante(self,id):
         participante = Participante()
         participante.idparticipante = id
         self.delete(participante)
